@@ -1,11 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * Modified from Spring 2016 offering of Compsci 201
- * @author ola
- * @version 2.0
- */
 
 
 public class Benchmark {
@@ -21,7 +16,7 @@ public class Benchmark {
 	 * @return a model that implements the proper interface
 	 */
 	private static MarkovInterface<String> getMarkov(int order) {
-		return new MarkovModel(order);
+		return new EfficientMarkov(order);
 		//return new EfficientMarkov(order);
 	}
 	
@@ -96,11 +91,11 @@ public class Benchmark {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Starting tests\n");
 		
-		String fileName = "alice.txt";
+		String fileName = "melville.txt";
 		File file = new File("data/"+fileName);
 		double[] data;
 		String source = TextSource.textFromFile(file);
-		int[] sizes = {100,200,400,800,1600};
+		int[] sizes = {1600,200,400,800,1600};
 		
 		for(int size : sizes) {
 			System.out.printf("Varying order, text length %d, source size %d\n",size,source.length());

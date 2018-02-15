@@ -1,13 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Interface for Compsci 201 Markov Assignment. Note that the order
- * of the Markov model would be typically set via a constructor
- * @author ola
- *
- * @param <Type> should be String or WordGram
- */
-
 public interface MarkovInterface<Type> {
 	
 	/**

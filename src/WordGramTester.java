@@ -68,12 +68,29 @@ public class WordGramTester {
 	
 	@Test
 	public void testShift() {
-		String[] words = {"apple", "zebra", "mongoose", "hat","cat"};
+		String[] words = {"apple", "zebra", "mongoose", "hat","cat", "bat"};
 		WordGram a = new WordGram(words,0,4);
 		WordGram b = new WordGram(words,1,4);
 		WordGram as = a.shiftAdd("cat");
+		WordGram c = new WordGram(words,0,5);
+		WordGram d = new WordGram(words,1,5);
+		WordGram cs = c.shiftAdd("bat");
 		assertEquals("shift add",as.equals(b),true);
 		assertEquals("shift add length",as.length() == a.length(),true);
+		assertEquals("shift add",cs.equals(d),true);//extended array test
+		assertEquals("shift add length", cs.length() == d.length(), true);//length test of cs and d
+	}
+	@Test
+	public void testToString() {
+		String[] words = {"apple", "zebra", "mongoose", "hat", "cat"};//establish strings
+		WordGram a = new WordGram(words,0,2);//create WordGrams
+		WordGram b = new WordGram(words,1,3);
+		WordGram c = new WordGram(words,0,3);
+		WordGram d = new WordGram(words,1,1);
+		assertEquals("join",a.toString(),"apple zebra");//check joined WordGrams vs desired output
+		assertEquals("join",b.toString(),"zebra mongoose hat");
+		assertEquals("join",c.toString(),"apple zebra mongoose");
+		assertEquals("join",d.toString(),"zebra");
 	}
 
 }
